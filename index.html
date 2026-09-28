@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ajjans Hub Key</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --red:#ff1744;
+    --red2:#ff003c;
+    --dark:#030303;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    color:#fff;
+    font-family:'Orbitron',sans-serif;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,0,55,.18),transparent 28%),
+        radial-gradient(circle at 80% 80%,rgba(255,0,55,.16),transparent 30%),
+        #030303;
+}
+
+/* ================= BACKGROUND ================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+}
+
+.grid{
+    position:absolute;
+    width:160%;
+    height:160%;
+    left:-30%;
+    top:-10%;
+    opacity:.12;
+
+    background-image:
+        linear-gradient(rgba(255,23,68,.2) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,23,68,.2) 1px,transparent 1px);
+
+    background-size:55px 55px;
+
+    transform:perspective(500px) rotateX(60deg);
+
+    animation:gridMove 8s linear infinite;
+}
+
+@keyframes gridMove{
+    from{
+        background-position:0 0;
+    }
+    to{
+        background-position:0 55px;
+    }
+}
+
+.bgGlow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:var(--red);
+    filter:blur(180px);
+    opacity:.07;
+
+    animation:bgMove 8s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove{
+    0%{
+        transform:translate(-220px,-160px);
+    }
+    100%{
+        transform:translate(220px,160px);
+    }
+}
+
+/* ================= PARTICLES ================= */
+
+.particle{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#ff1744;
+    box-shadow:
+        0 0 6px #ff1744,
+        0 0 14px #ff1744;
+
+    animation:particleMove linear infinite;
+}
+
+@keyframes particleMove{
+    0%{
+        transform:translateY(110vh) scale(.5);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    80%{
+        opacity:.8;
+    }
+
+    100%{
+        transform:translateY(-10vh) scale(1.4);
+        opacity:0;
+    }
+}
+
+/* ================= CARD ================= */
+
+.container{
+    position:relative;
+    z-index:10;
+
+    width:92%;
+    max-width:480px;
+
+    padding:42px 32px 34px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,0,55,.025)
+        ),
+        rgba(5,5,7,.9);
+
+    border:1px solid rgba(255,23,68,.35);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+        0 0 35px rgba(255,0,55,.12),
+        inset 0 0 35px rgba(255,0,55,.025);
+
+    animation:cardAppear .9s cubic-bezier(.2,.8,.2,1);
+}
+
+.container::before{
+    content:"";
+    position:absolute;
+    inset:-1px;
+
+    border-radius:28px;
+
+    background:linear-gradient(
+        120deg,
+        transparent 10%,
+        rgba(255,23,68,.8),
+        transparent 40%,
+        rgba(255,23,68,.5),
+        transparent 80%
+    );
+
+    opacity:.35;
+
+    z-index:-1;
+
+    animation:borderGlow 5s linear infinite;
+}
+
+@keyframes borderGlow{
+    0%{
+        transform:translateX(-80%);
+    }
+    100%{
+        transform:translateX(80%);
+    }
+}
+
+@keyframes cardAppear{
+    from{
+        opacity:0;
+        transform:translateY(45px) scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* ================= LOGO ================= */
+
+.logo{
+    position:relative;
+
+    width:125px;
+    height:125px;
+
+    margin:0 auto 27px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #25050c 0%,
+            #0a0305 48%,
+            #020202 100%
+        );
+
+    border:2px solid #ff1744;
+
+    box-shadow:
+        0 0 12px rgba(255,23,68,.95),
+        0 0 35px rgba(255,23,68,.55),
+        0 0 75px rgba(255,23,68,.2),
+        inset 0 0 30px rgba(255,23,68,.15);
+
+    animation:logoFloat 3s ease-in-out infinite;
+}
+
+/* Vòng ngoài */
+
+.logo::before{
+    content:"";
+    position:absolute;
+
+    inset:-11px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,23,68,.65);
+
+    border-left-color:transparent;
+    border-right-color:transparent;
+
+    animation:spin 5s linear infinite;
+}
+
+/* Vòng chấm */
+
+.logo::after{
+    content:"";
+    position:absolute;
+
+    inset:-22px;
+
+    border-radius:50%;
+
+    border:1px dashed rgba(255,23,68,.35);
+
+    animation:spinReverse 10s linear infinite;
+}
+
+/* CHỮ A */
+
+.logo span{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:100%;
+    height:100%;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:68px;
+    line-height:1;
+
+    font-weight:900;
+
+    font-style:normal;
+
+    color:#fff;
+
+    /* CỰC KỲ QUAN TRỌNG:
+       không nghiêng, không lệch */
+
+    transform:none;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 5px #fff,
+        0 0 12px #ff1744,
+        0 0 28px #ff1744,
+        0 0 50px rgba(255,23,68,.8);
+
+    animation:textPulse 2.2s ease-in-out infinite;
+}
+
+/* Tia sáng quanh A */
+
+.logo span::before,
+.logo span::after{
+    content:"";
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:155px;
+    height:2px;
+
+    transform:translate(-50%,-50%);
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,23,68,.8),
+        transparent
+    );
+
+    opacity:.35;
+}
+
+.logo span::after{
+    transform:translate(-50%,-50%) rotate(90deg);
+}
+
+@keyframes logoFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+@keyframes textPulse{
+    0%,100%{
+        text-shadow:
+            0 0 5px #fff,
+            0 0 12px #ff1744,
+            0 0 28px #ff1744;
+    }
+
+    50%{
+        text-shadow:
+            0 0 8px #fff,
+            0 0 20px #ff1744,
+            0 0 45px #ff1744,
+            0 0 70px rgba(255,23,68,.7);
+    }
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes spinReverse{
+    to{
+        transform:rotate(-360deg);
+    }
+}
+
+/* ================= TITLE ================= */
+
+.title{
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    background:linear-gradient(
+        90deg,
+        #ffffff,
+        #ff1744,
+        #ffffff,
+        #ff1744,
+        #ffffff
+    );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:titleMove 4s linear infinite;
+}
+
+@keyframes titleMove{
+    to{
+        background-position:300% center;
+    }
+}
+
+.subtitle{
+    margin-top:11px;
+    margin-bottom:28px;
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+}
+
+/* ================= KEY BOX ================= */
+
+.key-box{
+    display:flex;
+    gap:8px;
+
+    padding:7px;
+
+    border-radius:16px;
+
+    background:#060608;
+
+    border:1px solid rgba(255,23,68,.4);
+
+    transition:.3s;
+
+    box-shadow:
+        inset 0 0 20px rgba(255,23,68,.04);
+}
+
+.key-box:hover{
+    border-color:#ff1744;
+
+    box-shadow:
+        0 0 20px rgba(255,23,68,.18),
+        inset 0 0 20px rgba(255,23,68,.06);
+}
+
+.key-box input{
+    flex:1;
+    min-width:0;
+
+    padding:14px 10px;
+
+    border:none;
+    outline:none;
+
+    background:transparent;
+
+    color:#eee;
+
+    font-family:Arial,sans-serif;
+
+    font-size:13px;
+}
+
+.copy-btn{
+    border:none;
+    outline:none;
+
+    padding:0 19px;
+
+    border-radius:11px;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    font-family:'Orbitron',sans-serif;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    background:linear-gradient(
+        135deg,
+        #ff1744,
+        #b8002d
+    );
+
+    box-shadow:
+        0 0 12px rgba(255,23,68,.35);
+
+    transition:.25s;
+}
+
+.copy-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 0 15px rgba(255,23,68,.8),
+        0 0 35px rgba(255,23,68,.35);
+}
+
+.copy-btn:active{
+    transform:scale(.92);
+}
+
+/* ================= STATUS ================= */
+
+.status{
+    min-height:20px;
+
+    margin-top:16px;
+
+    color:#777;
+
+    font-family:Arial,sans-serif;
+
+    font-size:12px;
+
+    transition:.3s;
+}
+
+.status.success{
+    color:#ff3158;
+
+    text-shadow:
+        0 0 10px rgba(255,23,68,.8);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+    margin-top:28px;
+
+    color:#3f3f3f;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:500px){
+
+    .container{
+        padding:38px 20px 30px;
+    }
+
+    .logo{
+        width:110px;
+        height:110px;
+    }
+
+    .logo span{
+        font-size:60px;
+    }
+
+    .title{
+        font-size:26px;
+    }
+
+    .copy-btn{
+        padding:0 14px;
+        font-size:10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+
+    <div class="grid"></div>
+    <div class="bgGlow"></div>
+
+    <div class="particle" style="left:4%;animation-duration:8s;"></div>
+    <div class="particle" style="left:12%;animation-duration:11s;animation-delay:2s;"></div>
+    <div class="particle" style="left:21%;animation-duration:9s;animation-delay:1s;"></div>
+    <div class="particle" style="left:32%;animation-duration:13s;animation-delay:3s;"></div>
+    <div class="particle" style="left:44%;animation-duration:10s;"></div>
+    <div class="particle" style="left:57%;animation-duration:12s;animation-delay:2s;"></div>
+    <div class="particle" style="left:69%;animation-duration:9s;animation-delay:4s;"></div>
+    <div class="particle" style="left:81%;animation-duration:11s;animation-delay:1s;"></div>
+    <div class="particle" style="left:93%;animation-duration:8s;animation-delay:3s;"></div>
+
+</div>
+
+<div class="container">
+
+    <!-- LOGO A -->
+    <div class="logo">
+        <span>A</span>
+    </div>
+
+    <div class="title">
+        Ajjans Hub Key
+    </div>
+
+    <div class="subtitle">
+        KEY SYSTEM • ACCESS PANEL
+    </div>
+
+    <div class="key-box">
+
+        <input
+            id="keyInput"
+            type="text"
+            value="AjjansHubKeyVdksie - NbdkwowowhHshskejebdkke"
+            readonly
+        >
+
+        <button
+            class="copy-btn"
+            id="copyButton"
+            onclick="copyKey()"
+        >
+            COPY
+        </button>
+
+    </div>
+
+    <div
+        class="status"
+        id="status"
+    >
+        Press COPY to copy your key
+    </div>
+
+    <div class="footer">
+        AJJANS HUB • SECURE KEY SYSTEM
+    </div>
+
+</div>
+
+<script>
+
+function copyKey(){
+
+    const input =
+        document.getElementById("keyInput");
+
+    const status =
+        document.getElementById("status");
+
+    const button =
+        document.getElementById("copyButton");
+
+    navigator.clipboard.writeText(input.value)
+    .then(() => {
+
+        button.textContent = "COPIED";
+
+        status.textContent =
+            "✓ KEY COPIED SUCCESSFULLY";
+
+        status.classList.add("success");
+
+        setTimeout(() => {
+
+            button.textContent = "COPY";
+
+            status.textContent =
+                "Press COPY to copy your key";
+
+            status.classList.remove("success");
+
+        },2200);
+
+    })
+    .catch(() => {
+
+        input.select();
+
+        document.execCommand("copy");
+
+        button.textContent = "COPIED";
+
+        status.textContent =
+            "✓ KEY COPIED SUCCESSFULLY";
+
+        status.classList.add("success");
+
+        setTimeout(() => {
+
+            button.textContent = "COPY";
+
+            status.textContent =
+                "Press COPY to copy your key";
+
+            status.classList.remove("success");
+
+        },2200);
+
+    });
+}
+
+</script>
+
+</body>
+</html>
